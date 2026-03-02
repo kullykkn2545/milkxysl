@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Milk Pansa x YSL Caption Generator</title>
+<style>
+body{
+font-family: Arial;
+background:black;
+color:white;
+text-align:center;
+padding:40px;
+}
+button{
+padding:12px 20px;
+margin:10px;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+.generate{background:gold;color:black;}
+.copy{background:white;color:black;}
+.box{
+margin-top:30px;
+padding:20px;
+border:1px solid gold;
+border-radius:12px;
+min-height:100px;
+}
+</style>
+</head>
+<body>
+
+<h1>Milk Pansa x YSL ✨</h1>
+
+<button class="generate" onclick="generateCaption()">Generate Caption</button>
+<button class="copy" onclick="copyCaption()">Copy Caption + Hashtags</button>
+
+<div class="box" id="captionBox">
+Your caption will appear here...
+</div>
+
+<script>
+
+const hashtags = `
+#MilkPansa
+#YSL
+#SaintLaurent
+#YSLFashion
+#ParisFashionWeek
+#PFW
+`;
+
+let captions = [
+"Milk Pansa glowing in YSL elegance ✨",
+"Milk Pansa serving iconic YSL energy 🔥",
+"YSL looks better when Milk Pansa wears it 💎",
+"Milk Pansa redefining luxury with YSL 👑",
+"Soft power meets YSL glamour — Milk Pansa edition 💫",
+"Milk Pansa shining brighter than YSL gold ✨",
+"YSL aura fits Milk Pansa perfectly 🌙",
+"Milk Pansa turning YSL into a masterpiece 🎨",
+"Confidence level: Milk Pansa in YSL 🔥",
+"Milk Pansa walking like she owns YSL runway 👠",
+
+"Milk Pansa + YSL = Fashion perfection 💎",
+"YSL elegance amplified by Milk Pansa ✨",
+"Milk Pansa making YSL unforgettable 🔥",
+"Paris vibes, YSL glam, Milk Pansa glow 🇫🇷",
+"Milk Pansa redefining chic with YSL 💫",
+"YSL masterpiece worn by Milk Pansa 👑",
+"Milk Pansa radiating Saint Laurent power ⚡",
+"Milk Pansa turning heads in YSL 💎",
+"YSL magic, Milk Pansa moment ✨",
+"Milk Pansa slaying in full YSL look 🔥",
+
+"Milk Pansa is the YSL standard 💫",
+"YSL sparkle matches Milk Pansa shine ✨",
+"Milk Pansa owning the YSL spotlight 🔥",
+"Luxury is Milk Pansa in YSL 👑",
+"Milk Pansa elevating YSL elegance 💎",
+"YSL aura wrapped around Milk Pansa ✨",
+"Milk Pansa walking art in YSL 🎨",
+"Milk Pansa glowing with Saint Laurent glam 💫",
+"YSL couture meets Milk Pansa confidence 🔥",
+"Milk Pansa shining in iconic YSL style 👠",
+
+"Milk Pansa in YSL is pure sophistication 💎",
+"YSL power embodied by Milk Pansa ✨",
+"Milk Pansa creating a YSL fairytale 🌙",
+"Milk Pansa + Saint Laurent = Timeless 🔥",
+"Milk Pansa owning YSL energy 👑",
+"YSL never looked this iconic on Milk Pansa 💫",
+"Milk Pansa making YSL history ✨",
+"YSL elegance perfectly fits Milk Pansa 💎",
+"Milk Pansa shining in Saint Laurent light 🔥",
+"Milk Pansa redefining YSL runway vibes 👠",
+
+"Milk Pansa in YSL is fashion poetry ✨",
+"Saint Laurent glamour, Milk Pansa glow 💫",
+"Milk Pansa turning YSL into art 🔥",
+"YSL luxury amplified by Milk Pansa 👑",
+"Milk Pansa dazzling in Saint Laurent 💎",
+"Milk Pansa radiating YSL elegance ✨",
+"YSL aura shining through Milk Pansa 🔥",
+"Milk Pansa rewriting YSL fashion rules 👠",
+"Milk Pansa glowing in golden YSL vibes 💫",
+"YSL masterpiece starring Milk Pansa 👑",
+
+"Milk Pansa defining YSL chic ✨",
+"YSL glam, Milk Pansa charm 💎",
+"Milk Pansa embodying Saint Laurent luxury 🔥",
+"YSL power look by Milk Pansa 👠",
+"Milk Pansa shining in YSL spotlight ✨",
+"Saint Laurent meets Milk Pansa magic 💫",
+"Milk Pansa turning YSL into legend 🔥",
+"YSL elegance worn by Milk Pansa 👑",
+"Milk Pansa radiating couture confidence 💎",
+"Milk Pansa owning every YSL moment ✨",
+
+"Milk Pansa glowing like YSL gold 💫",
+"YSL glam powered by Milk Pansa 🔥",
+"Milk Pansa elevating Saint Laurent style 👑",
+"YSL spotlight belongs to Milk Pansa ✨",
+"Milk Pansa shining in couture brilliance 💎",
+"YSL iconic energy meets Milk Pansa glow 🔥",
+"Milk Pansa redefining Saint Laurent elegance 👠",
+"Milk Pansa + YSL = Ultimate chic ✨",
+"Milk Pansa dazzling under YSL lights 💫",
+"YSL masterpiece featuring Milk Pansa 👑",
+
+"Milk Pansa owning Saint Laurent vibes 🔥",
+"Milk Pansa turning YSL into timeless beauty ✨",
+"YSL luxury amplified by Milk Pansa glow 💎",
+"Milk Pansa radiating pure couture energy 👠",
+"Milk Pansa shining brighter than YSL lights ✨",
+"YSL fashion queen: Milk Pansa 👑",
+"Milk Pansa redefining elegance in YSL 💫",
+"Milk Pansa glowing in Saint Laurent gold 🔥",
+"YSL aura wrapped around Milk Pansa 💎",
+"Milk Pansa serving couture perfection ✨",
+
+"Milk Pansa shining in iconic YSL glamour 💫",
+"YSL runway magic starring Milk Pansa 🔥",
+"Milk Pansa owning the Saint Laurent stage 👑",
+"Milk Pansa turning YSL into art form 🎨",
+"YSL elegance powered by Milk Pansa ✨",
+"Milk Pansa glowing in couture spotlight 💎",
+"Milk Pansa making Saint Laurent unforgettable 🔥",
+"YSL masterpiece moment with Milk Pansa 👠",
+"Milk Pansa redefining fashion royalty 👑",
+"Milk Pansa radiating Saint Laurent power ✨",
+
+"Milk Pansa shining like YSL diamond 💎",
+"YSL couture confidence — Milk Pansa edition 🔥",
+"Milk Pansa glowing in Saint Laurent aura ✨",
+"Milk Pansa owning every YSL frame 👑",
+"YSL glam queen: Milk Pansa 💫",
+"Milk Pansa turning fashion into legacy 🔥",
+"Milk Pansa shining under YSL spotlight ✨",
+"Saint Laurent elegance fits Milk Pansa perfectly 💎",
+"Milk Pansa rewriting YSL glamour rules 👠",
+"Milk Pansa glowing in couture excellence ✨",
+
+"Milk Pansa serving Saint Laurent elegance 🔥",
+"YSL brilliance starring Milk Pansa 💫",
+"Milk Pansa radiating timeless YSL beauty 👑",
+"Milk Pansa shining in fashion paradise ✨",
+"YSL chic energy embodied by Milk Pansa 💎",
+"Milk Pansa glowing in luxury spotlight 🔥",
+"Milk Pansa owning Saint Laurent runway 👠",
+"YSL glam moment by Milk Pansa ✨",
+"Milk Pansa redefining couture glow 💫",
+"Milk Pansa shining like pure YSL gold 👑",
+
+"Milk Pansa + YSL = Fashion dream ✨",
+"Milk Pansa glowing in iconic Saint Laurent 💎",
+"YSL elegance wrapped in Milk Pansa aura 🔥",
+"Milk Pansa turning every YSL look legendary 👑",
+"Milk Pansa shining in couture brilliance ✨",
+"Saint Laurent masterpiece worn by Milk Pansa 💫",
+"Milk Pansa owning YSL fashion world 🔥",
+"Milk Pansa glowing with luxury confidence 👠",
+"YSL glamour powered by Milk Pansa 👑",
+"Milk Pansa redefining Saint Laurent chic ✨",
+
+"Milk Pansa shining beyond YSL lights 💎",
+"Milk Pansa glowing in timeless couture 🔥",
+"YSL luxury embodied by Milk Pansa 👑",
+"Milk Pansa turning fashion into statement ✨",
+"Saint Laurent glow matches Milk Pansa aura 💫",
+"Milk Pansa owning every couture frame 🔥",
+"Milk Pansa radiating iconic YSL elegance 👠",
+"YSL moment sealed by Milk Pansa ✨",
+"Milk Pansa shining in fashion history 💎",
+"Milk Pansa crowned in Saint Laurent glam 👑"
+];
+
+function generateCaption(){
+if(captions.length === 0){
+document.getElementById("captionBox").innerHTML="No captions left!";
+return;
+}
+let randomIndex = Math.floor(Math.random()*captions.length);
+let chosen = captions[randomIndex];
+captions.splice(randomIndex,1);
+document.getElementById("captionBox").innerHTML = chosen + "\n" + hashtags;
+}
+
+function copyCaption(){
+let text = document.getElementById("captionBox").innerText;
+navigator.clipboard.writeText(text);
+alert("Copied!");
+}
+
+</script>
+
+</body>
+</html>
